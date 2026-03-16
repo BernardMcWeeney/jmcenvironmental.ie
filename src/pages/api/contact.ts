@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData();
 
@@ -22,15 +23,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
       return jsonResponse({ success: false, message: 'CAPTCHA verification failed.' }, 400);
     }
 
-    // Access env vars via the Cloudflare runtime (locals.runtime.env)
-    const env = (locals as any).runtime?.env ?? {};
-
-    const turnstileSecret = env.TURNSTILE_SECRET_KEY;
-    const region = env.AWS_REGION;
-    const accessKeyId = env.AWS_ACCESS_KEY_ID;
-    const secretAccessKey = env.AWS_SECRET_ACCESS_KEY;
-    const fromAddress = env.FROM_EMAIL_ADDRESS;
-    const toAddress = env.TO_EMAIL_ADDRESS;
+    // Access env vars via cloudflare:workers (Astro v6 pattern)
+    const turnstileSecret = (env as any).TURNSTILE_SECRET_KEY;
+    const region = (env as any).AWS_REGION;
+    const accessKeyId = (env as any).AWS_ACCESS_KEY_ID;
+    const secretAccessKey = (env as any).AWS_SECRET_ACCESS_KEY;
+    const fromAddress = (env as any).FROM_EMAIL_ADDRESS;
+    const toAddress = (env as any).TO_EMAIL_ADDRESS;
 
     // Verify Turnstile
     const turnstileResult = await verifyTurnstileToken(turnstileToken, request.headers.get('CF-Connecting-IP'), turnstileSecret);

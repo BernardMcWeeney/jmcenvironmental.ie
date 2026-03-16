@@ -9,5 +9,12 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"vars": {
+		"AWS_ACCESS_KEY_ID": "AKIAXD6BQEPBBZYEZ5P2",
+		"AWS_REGION": "eu-west-1",
+		"FROM_EMAIL_ADDRESS": "noreply@greenberry.ie",
+		"TO_EMAIL_ADDRESS": "office@greenberry.ie",
+		"NODE_VERSION": "25"
 	}
 }

@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.2",
-    "@aws-sdk/client-ses": "^3.1009.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.5",
     "tailwindcss": "^4.2.1",

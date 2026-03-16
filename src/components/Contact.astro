@@ -175,7 +175,10 @@
 
           <!-- Turnstile CAPTCHA -->
           <div class="flex justify-center">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAWsI1fJREzBYF91" data-theme="dark"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAWsI1fJREzBYF91" data-theme="dark" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>
+          </div>
+          <div id="turnstile-error" class="hidden p-3 bg-amber-900/30 border border-amber-500/30 text-amber-300 text-sm text-center">
+            CAPTCHA failed to load. Please disable your ad blocker or try a different browser, then refresh the page.
           </div>
 
           <button
@@ -196,48 +199,69 @@
 </section>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const successMessage = document.getElementById('form-status-success');
-    const errorMessage = document.getElementById('form-status-error');
-    const errorText = document.getElementById('error-message');
+  // Turnstile state
+  var turnstileReady = false;
+  function onTurnstileSuccess() { turnstileReady = true; }
+  function onTurnstileExpired() { turnstileReady = false; }
+  function onTurnstileError() {
+    turnstileReady = false;
+    var el = document.getElementById('turnstile-error');
+    if (el) el.classList.remove('hidden');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var contactForm = document.getElementById('contact-form');
+    var submitButton = document.getElementById('submit-button');
+    var successMessage = document.getElementById('form-status-success');
+    var errorMessage = document.getElementById('form-status-error');
+    var errorText = document.getElementById('error-message');
+    var turnstileError = document.getElementById('turnstile-error');
 
     if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         e.stopPropagation();
 
+        if (successMessage) successMessage.classList.add('hidden');
+        if (errorMessage) errorMessage.classList.add('hidden');
+
+        // Check Turnstile before submitting
+        if (!turnstileReady) {
+          if (turnstileError) turnstileError.classList.remove('hidden');
+          return false;
+        }
+
         if (submitButton) {
           submitButton.disabled = true;
           submitButton.textContent = 'Sending...';
         }
 
-        if (successMessage) successMessage.classList.add('hidden');
-        if (errorMessage) errorMessage.classList.add('hidden');
-
-        const formData = new FormData(contactForm);
+        var formData = new FormData(contactForm);
 
         fetch('/api/contact', {
           method: 'POST',
           body: formData
         })
-        .then(response => response.json())
-        .then(result => {
+        .then(function(response) { return response.json(); })
+        .then(function(result) {
           if (result.success) {
             if (successMessage) successMessage.classList.remove('hidden');
             contactForm.reset();
+            turnstileReady = false;
+            if (typeof turnstile !== 'undefined') {
+              turnstile.reset();
+            }
           } else {
             if (errorText) errorText.textContent = result.message || 'There was a problem sending your message. Please try again.';
             if (errorMessage) errorMessage.classList.remove('hidden');
           }
         })
-        .catch(error => {
+        .catch(function(error) {
           console.error('Error submitting form:', error);
           if (errorText) errorText.textContent = 'There was a problem connecting to the server. Please try again later.';
           if (errorMessage) errorMessage.classList.remove('hidden');
         })
-        .finally(() => {
+        .then(function() {
           if (submitButton) {
             submitButton.disabled = false;
             submitButton.textContent = 'Send Enquiry';

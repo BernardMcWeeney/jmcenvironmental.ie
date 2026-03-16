@@ -1,0 +1,60 @@
+---
+import Logo from './Logo.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-black py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <Logo color="white" />
+        <p class="mt-6 text-white/40 leading-relaxed max-w-md text-sm">
+          Environmental monitoring and compliance specialists serving Ireland's quarrying, construction, and industrial sectors for over 20 years.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wide mb-4">Services</h4>
+        <ul class="space-y-3">
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Noise Monitoring</a></li>
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Dust Monitoring</a></li>
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Vibration Monitoring</a></li>
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Environmental Compliance</a></li>
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Air Quality</a></li>
+          <li><a href="#services" class="text-sm text-white/40 hover:text-white transition-colors">Consultancy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wide mb-4">Contact</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="tel:+353871234567" class="text-sm text-white/40 hover:text-white transition-colors">
+              +353 87 123 4567
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@jmcenvironmental.ie" class="text-sm text-white/40 hover:text-white transition-colors">
+              info@jmcenvironmental.ie
+            </a>
+          </li>
+          <li class="text-sm text-white/40">Ireland &mdash; Nationwide</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-white/30">
+        &copy; {currentYear} JMC Environmental. All rights reserved.
+      </p>
+      <p class="text-xs text-white/20">
+        Environmental Compliance Specialists
+      </p>
+    </div>
+  </div>
+</footer>

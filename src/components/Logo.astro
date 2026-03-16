@@ -1,0 +1,42 @@
+---
+interface Props {
+  class?: string;
+  color?: string;
+}
+
+const { class: className = '', color = 'currentColor' } = Astro.props;
+---
+
+<a href="#" class:list={['flex items-center gap-3 group', className]}>
+  <svg
+    viewBox="0 0 100 100"
+    fill="none"
+    class="h-10 w-10 sm:h-12 sm:w-12"
+    aria-hidden="true"
+  >
+    <path
+      d="M 4 4 L 68 4 M 96 32 L 96 96 L 4 96 L 4 4"
+      stroke={color}
+      stroke-width="5"
+      stroke-linecap="square"
+    />
+    <text
+      x="50"
+      y="63"
+      text-anchor="middle"
+      fill={color}
+      font-family="Inter, system-ui, sans-serif"
+      font-weight="800"
+      font-size="30"
+      letter-spacing="1"
+    >JMC</text>
+  </svg>
+  <div class="hidden sm:block leading-tight">
+    <span class="block text-sm font-bold tracking-wide uppercase" style={`color: ${color}`}>
+      JMC Environmental
+    </span>
+    <span class="block text-xs tracking-wider uppercase opacity-60" style={`color: ${color}`}>
+      Compliance Specialists
+    </span>
+  </div>
+</a>

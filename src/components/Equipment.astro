@@ -39,25 +39,25 @@ const equipment = [
 ];
 ---
 
-<section id="equipment" class="py-24 lg:py-32 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<section id="equipment" class="py-16 sm:py-24 lg:py-32 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="max-w-2xl mb-16 lg:mb-20">
+    <div class="max-w-2xl mb-12 sm:mb-16 lg:mb-20">
       <p class="text-navy-500 text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-        Equipment & Solutions
+        Our Capabilities
       </p>
-      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-800 text-navy-900 tracking-tight leading-tight">
-        Industry-Leading Monitoring Equipment
+      <h2 class="text-3xl sm:text-4xl xl:text-5xl font-800 text-navy-900 tracking-tight leading-tight">
+        Independent, Impartial Monitoring
       </h2>
       <p class="mt-6 text-lg text-gray-500 leading-relaxed">
-        We supply, install, and maintain a comprehensive range of environmental monitoring equipment. All instruments are regularly calibrated to ensure accuracy and regulatory compliance.
+        As an independent consultancy, we deliver impartial readings you can trust. Our monitoring services utilise calibrated, industry-leading instrumentation to provide accurate, defensible data for regulatory compliance.
       </p>
     </div>
 
     <!-- Equipment Grid -->
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
       {equipment.map(({ category, items }) => (
-        <div class="bg-white p-8 lg:p-10 border border-gray-200 hover:border-navy-200 transition-colors duration-300">
+        <div class="bg-white p-6 sm:p-8 lg:p-10 border border-gray-200 hover:border-navy-200 transition-colors duration-300">
           <h3 class="text-xl font-bold text-navy-900 mb-6 pb-4 border-b border-gray-100">
             {category}
           </h3>
@@ -76,9 +76,9 @@ const equipment = [
     </div>
 
     <!-- CTA -->
-    <div class="mt-16 text-center">
+    <div class="mt-12 sm:mt-16 text-center">
       <p class="text-gray-500 mb-6">
-        Need equipment for a specific monitoring requirement? We can advise on the best solution.
+        Need independent monitoring for your site? Get in touch to discuss your requirements.
       </p>
       <a
         href="#contact"

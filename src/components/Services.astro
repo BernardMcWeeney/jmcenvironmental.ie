@@ -39,14 +39,14 @@ const services = [
 ];
 ---
 
-<section id="services" class="py-24 lg:py-32 bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<section id="services" class="py-16 sm:py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="max-w-2xl mb-16 lg:mb-20">
+    <div class="max-w-2xl mb-12 sm:mb-16 lg:mb-20">
       <p class="text-navy-500 text-sm font-semibold tracking-[0.2em] uppercase mb-4">
         What We Do
       </p>
-      <h2 class="text-3xl lg:text-4xl xl:text-5xl font-800 text-navy-900 tracking-tight leading-tight">
+      <h2 class="text-3xl sm:text-4xl xl:text-5xl font-800 text-navy-900 tracking-tight leading-tight">
         Specialist Environmental Monitoring & Compliance
       </h2>
       <p class="mt-6 text-lg text-gray-500 leading-relaxed">
@@ -55,9 +55,9 @@ const services = [
     </div>
 
     <!-- Services Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
       {services.map(({ title, description, icon }) => (
-        <div class="bg-white p-8 lg:p-10 group hover:bg-navy-50/50 transition-colors duration-300">
+        <div class="bg-white p-6 sm:p-8 lg:p-10 group hover:bg-navy-50/50 transition-colors duration-300">
           <div class="w-12 h-12 flex items-center justify-center mb-6 border border-navy-200 text-navy-600 group-hover:bg-navy-900 group-hover:text-white group-hover:border-navy-900 transition-all duration-300">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d={icon} />

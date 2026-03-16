@@ -8,8 +8,8 @@
   <!-- Accent line -->
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-navy-400/30 to-transparent"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-24 lg:pt-40 lg:pb-24 w-full">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-24 w-full">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
       <!-- Left Column - Content -->
       <div>
         <!-- Eyebrow -->
@@ -48,8 +48,8 @@
           </a>
         </div>
 
-        <!-- Stats -->
-        <div class="mt-16 lg:mt-20 pt-10 border-t border-white/10 grid grid-cols-3 gap-8 max-w-lg">
+        <!-- Stats - hidden on mobile, shown below image on mobile -->
+        <div class="hidden lg:grid mt-16 lg:mt-20 pt-10 border-t border-white/10 grid-cols-3 gap-8 max-w-lg">
           <div>
             <p class="text-3xl lg:text-4xl font-800 text-white">20+</p>
             <p class="text-sm text-white/40 mt-1 uppercase tracking-wide">Years</p>
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Right Column - Image -->
-      <div class="relative hidden lg:block mt-16">
+      <div class="relative mt-4 lg:mt-16">
         <div class="relative aspect-[4/3] overflow-hidden">
           <img
             src="/hero-quarry.jpg"
@@ -92,10 +92,26 @@
         </div>
       </div>
     </div>
+
+    <!-- Mobile Stats -->
+    <div class="grid lg:hidden grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
+      <div>
+        <p class="text-2xl sm:text-3xl font-800 text-white">20+</p>
+        <p class="text-xs sm:text-sm text-white/40 mt-1 uppercase tracking-wide">Years</p>
+      </div>
+      <div>
+        <p class="text-2xl sm:text-3xl font-800 text-white">500+</p>
+        <p class="text-xs sm:text-sm text-white/40 mt-1 uppercase tracking-wide">Projects</p>
+      </div>
+      <div>
+        <p class="text-2xl sm:text-3xl font-800 text-white">100%</p>
+        <p class="text-xs sm:text-sm text-white/40 mt-1 uppercase tracking-wide">Compliant</p>
+      </div>
+    </div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/30">
     <span class="text-xs tracking-widest uppercase">Scroll</span>
     <div class="w-px h-8 bg-gradient-to-b from-white/30 to-transparent"></div>
   </div>
